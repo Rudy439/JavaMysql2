@@ -83,5 +83,37 @@ public class Database {
 
 
     }
+    public void updatePopulation(String country, String city, int population){
+     if(country == null) {
+     System.out.println(" Warning Country " + city + " does not exist! ");
+     if (population <=0)
+         return;
+
+
+            else{
+
+                String query = "UPDATE city " + "INNER JOIN country ON city.CountryCode=country.code " + "WHERE name LIKE = '?'" + "SET info = '?'";
+
+
+            try {
+                Connection con = getConnection();
+                PreparedStatement ps = con.prepareStatement(query);
+                ps.setString(1,"{\"Population\" +" population + "}";
+                ps.setString(2,city);
+                ps.setString(3,country);
+
+                System.out.println(ps);
+                ps.executeUpdate();
+                con.close();
+
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            }
+        }
+    }
 
 }
