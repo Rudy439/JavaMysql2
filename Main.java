@@ -11,6 +11,7 @@ public class Main {
         database.getCountryInfo("Italy");
         List<City> list=database.showCities(name);
         out.printCities(list);
-
+        
+  database.insertNewMonument("AUT" , "Wien","Karlskirche");
     }
 }
